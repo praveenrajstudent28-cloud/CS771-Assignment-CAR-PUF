@@ -95,7 +95,18 @@ The response is written as a piecewise rule above to preserve the report's bound
 
 ```text
 .
-`-- README.md          # Project overview and report summary
+|-- README.md          # Project overview and report summary
+`-- submit.py          # Feature mapping and Logistic Regression implementation
 ```
 
-This repository currently contains project documentation. Reproducing the experiments requires the original training code and datasets, which are not included here.
+## Running the implementation
+
+`submit.py` maps each 32-bit challenge to 528 features, trains a scikit-learn `LogisticRegression` model, and prints test accuracy. The supplied script is preserved as provided; it does not run the full parameter sweeps described in the report.
+
+Install NumPy, scikit-learn, and SciPy. Place `train.dat` and `test.dat` in the working directory, with 32 challenge columns followed by the response label in column 33, then run:
+
+```bash
+python submit.py
+```
+
+The datasets are not included in this repository.
