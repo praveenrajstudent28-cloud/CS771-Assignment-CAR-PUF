@@ -21,7 +21,7 @@ This overview summarizes the derivation and eight experiment plots in the author
 
 ## From 32 challenge bits to 528 features
 
-For a challenge $c=(c_1,\ldots,c_{32})\in\{0,1\}^{32}$, first compute the signed suffix products:
+For a challenge $c=(c_1,\ldots,c_{32})\in\lbrace0,1\rbrace^{32}$, first compute the signed suffix products:
 
 $$
 x_i=\prod_{j=i}^{32}(1-2c_j),\qquad i=1,\ldots,32.
@@ -32,7 +32,7 @@ Append the constant $x_{33}=1$ to obtain $\tilde{x}=(x_1,\ldots,x_{32},1)$.
 The feature map contains every distinct pairwise product:
 
 $$
-\phi(c)=(x_i x_j)_{1\leq i<j\leq33}\in\mathbb{R}^{528}.
+\phi(c)=(x_i x_j)_{1\leq i\lt j\leq33}\in\mathbb{R}^{528}.
 $$
 
 There are $\binom{33}{2}=528$ features: **496 products between the first 32 components** and **32 products with the appended constant**. The latter are simply the original transformed components $x_i$. Since $x_i^2=1$, squared terms contribute to the model's bias rather than requiring additional features.
@@ -49,7 +49,7 @@ Define $z=(u-v,p-q)$. For a nonnegative threshold $\tau$, the CAR-PUF response i
 
 $$
 f(c)=(z^\top\tilde{x})^2-\tau^2
-=\sum_{i<j}2z_i z_j x_i x_j+\sum_{i=1}^{33}z_i^2-\tau^2
+=\sum_{i\lt j}2z_i z_j x_i x_j+\sum_{i=1}^{33}z_i^2-\tau^2
 =W^\top\phi(c)+b,
 $$
 
